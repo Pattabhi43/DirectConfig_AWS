@@ -56,7 +56,10 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: self-hosted
-    environment: production
+    env:
+      AWS_ACCESS_KEY: ${{ variables.AWS_ACCESS_KEY }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      AMI: ${{ secrets.REDHAT_AMI }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -89,8 +92,16 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      env:
+        AWS_ACCESS_KEY: ${{ variables.AWS_ACCESS_KEY }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AMI: ${{ secrets.REDHAT_AMI }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform apply -auto-approve
+      env:
+        AWS_ACCESS_KEY: ${{ variables.AWS_ACCESS_KEY }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AMI: ${{ secrets.REDHAT_AMI }}
