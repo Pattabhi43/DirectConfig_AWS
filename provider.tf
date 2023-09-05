@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+
 provider "aws" {
   # Configuration options
   access_key = var.AWS_access_key
