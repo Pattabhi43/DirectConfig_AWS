@@ -7,7 +7,7 @@ variable "SECRET_key" {
 }
 
 variable "redhat_ami" {
-  default = "ami-03d6a5256a46c9feb"
+  default = "ami-008b85aa3ff5c1b02"
 }
 
 variable "instance_type" {
