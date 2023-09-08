@@ -11,5 +11,5 @@ provider "aws" {
   # Configuration options
   access_key = var.AWS_access_key
   secret_key = var.SECRET_key
-  
+  region = "ap-south-1"
 }
