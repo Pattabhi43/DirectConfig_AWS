@@ -10,6 +10,7 @@ data "aws_iam_instance_profile" "Uni" {
 data "aws_key_pair" "Bishops" {
   key_name = "Bishops"  
 }
+
 resource "aws_instance" "Bishops" {
   instance_type = local.instance_type
   ami = var.redhat_ami
