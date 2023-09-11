@@ -9,7 +9,8 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  access_key = var.AWS_access_key
-  secret_key = var.SECRET_key
-  region = "us-east-1"
+  profile = "arn:aws:iam::525567955121:role/Account-user"
+  # access_key = var.AWS_access_key
+  # secret_key = var.SECRET_key
+  # region = "us-east-1"
 }

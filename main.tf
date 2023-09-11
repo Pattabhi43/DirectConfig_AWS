@@ -11,9 +11,13 @@ data "aws_key_pair" "Bishops" {
   key_name = "Bishops"  
 }
 
+data "aws_ami" "Bishops" {
+  owners = [ "525567955121" ]
+  most_recent = true
+}
 resource "aws_instance" "Bishops" {
   instance_type = local.instance_type
-  ami = var.redhat_ami
+  ami = data.aws_ami.Bishops.id
   key_name = data.aws_key_pair.Bishops.key_name
   iam_instance_profile = data.aws_iam_instance_profile.Uni.name
   tags = local.common_tags
